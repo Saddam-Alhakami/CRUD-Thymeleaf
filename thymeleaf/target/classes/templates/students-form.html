@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Student Directory</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+
+		<h3>Student Directory</h3>
+		<hr>
+		<a th:href="@{/students/showFormForAdd}" class="btn btn-primary btn-sm mb-3">
+			Add Student
+		</a>
+
+		<table class="table table-bordered table-striped">
+			<thead class="table-dark">
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="tempstudent : ${students}">
+					<td th:text="${tempstudent.firstName}" /> <!-- Corrected typo here -->
+					<td th:text="${tempstudent.lastName}" />
+					<td th:text="${tempstudent.email}" />
+					<td>
+						<!-- Add update button/link here -->
+
+						<a th:href="@{/students/showFormForUpdate(studentId=${tempstudent.id})}"
+							class="btn btn-info btn-sm">
+							Update
+						</a>
+						<!-- Add DELETE button/link here -->
+
+						<a th:href="@{/students/delete(studentId=${tempstudent.id})}" class="btn btn-info btn-sm">
+							delete
+						</a>
+
+					</td>
+
+
+
+
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</body>
+
+</html>
